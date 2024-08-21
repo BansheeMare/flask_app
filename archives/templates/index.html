@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .deposit-page{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    max-width: 780px;
+    background-color: #586487;
+    transition: .5s;
+}
+.deposit-back{
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    background-image: url('http://signaturesoluctions.cloud/image/icons/arrow_left');
+    background-position: center;
+    background-size: 5vw;
+    background-repeat: no-repeat;
+
+
+
+}
+.deposit-title{
+    display: block;
+    width: 100vw;
+    max-width: 780px;
+    font-size: 18px;
+    line-height: 10vw;
+    height: 10vw;
+    max-height: 78px;
+    color: #EEEEEE;
+    background-color: #475476;
+    text-align: center;
+}
+.deposit-logo{
+    margin: auto;
+    margin-top: 10px;
+    height: 20vw;
+    max-height: 156px;
+    width: 20vw;
+    max-width: 156px;
+    background-size: contain;
+    background-image: url('http://signaturesoluctions.cloud/image/misc/pix');
+}
+.deposit-instruction{
+
+    text-align: center;
+    padding: 10px;
+    color: #EEEEEE;
+    border-top: 1px solid #7985aa;
+    border-bottom: 1px solid #7985aa;
+}
+#deposit-value{
+    font-size: 10vw;
+    text-align: center;
+    color: #EEEEEE;
+}
+#qrcode{
+    margin: auto;
+    height: 50vw;
+    width: 50vw;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 1vw;
+    background-size: cover;
+    background-position: center;
+}
+#copy-qrcode{
+    margin: auto;
+    background-color: rgb(150, 150, 0);
+    margin-bottom: 5vw;
+    margin-top: 5vw;
+    height: 10vw;
+    width: 40vw;
+    line-height: 10vw;
+    text-align: center;
+    color: #EEEEEE;
+    border-radius: 2vw;
+}
+
+.deposit_select{
+    position: absolute;
+    top: calc(50vh - 40vw);
+    left: 5vw;
+    height: 80vw;
+    overflow: hidden;
+    width: 90vw;
+    border-radius: 2vw;
+    background-color: #586487;
+}
+.deposit_select_title{
+    display: block;
+    width: 90vw;
+    max-width: 780px;
+    font-size: 18px;
+    line-height: 10vw;
+    height: 10vw;
+    max-height: 78px;
+    color: #EEEEEE;
+    background-color: #475476;
+    text-align: center;
+}
+.deposit_element{
+    position: inherit;
+    height: 10vw;
+    width: 37vw;
+    line-height: 10vw;
+    border-radius: 2vw;
+    
+    background-color: #586487;
+    border: 1px solid #7985aa;
+    color: #EEEEEE;
+    text-align: center;
+    font-size: 5vw;
+}
+#deposit_loader{
+    position: absolute;
+    height: 80vw;
+    line-height: 60vw;
+    overflow: hidden;
+    width: 90vw;
+    font-size: 6vw;
+    text-align: center;
+    border-radius: 2vw;
+    color: #EEEEEE;
+    background-color: #586487;
+}
+
+#deposit_select_modal{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(10, 10, 10, .5);
+}
+
+.login_modal{
+    background-color: rgba(10, 10, 10, .5);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 9999;
+}
+.login-container {
+    display: block;
+    margin: auto;
+    width: 65vw;
+}
+
+.login-form {
+    background-color: #3a3a3a;
+    border-radius: 0.8vw;
+    padding: 5vw;
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.2);
+    width: 65vw;
+    height: 70vw;
+    margin-top: 30vw;
+}
+
+.login-form h1 {
+    margin: 0 0 4vw;
+    font-size: 6vw;
+    text-align: center;
+    color: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 1.5vw;
+}
+
+.form-group label {
+    display: block;
+    font-size: 4vw;
+    color: #b0b0b0;
+    margin-bottom: 1vw;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1vw;
+    border: 0.1vw solid #333;
+    border-radius: 0.4vw;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 3vw;
+}
+
+.form-group input::placeholder {
+    color: #555;
+    font-size: 3vw;
+}
+
+.button {
+    position: inherit;
+    display: block;
+    width: 100%;
+    bottom: 2vw;
+    padding: 1vw;
+    border: none;
+    border-radius: 0.4vw;
+    background-color: #6200ea;
+    color: #ffffff;
+    font-size: 3vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #3700b3;
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Sofia-Pro;
+}
+body{
+    background-color: #586487;
+    height: 330vw;
+    width: 100vw;
+}
+nav{
+    position: fixed;
+    height: 12vw;
+    width: 100vw;
+    position: static;
+    background-color: #364364;
+    top: 0px;
+}
+.main_banner{
+    height: 30vw;
+    width: 96vw;
+    top: 16vw;
+    border-radius: 2vw;
+    background-color: #475476;
+    position: absolute;
+    left: 2vw;
+    background-position: center;
+    background-size: cover;
+    background-image: url('https://betpal.com/wp-content/uploads/2019/08/Pragmatic.png');
+    
+    
+}
+
+.title_line{
+    position: absolute;
+    height: 10vw;
+    width: 100vw;
+    top: 89vw;
+}
+
+.title_icon{
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 7vw;
+}
+.title_text{
+    position: absolute;
+    height: 10vw;
+    width: 90vw;
+    left: 10vw;
+    font-size: 5vw;
+    line-height: 10vw;
+    color: #EEEEEE;
+
+}
+
+.game_element{
+    position: absolute;
+    width: 32vw;
+    height: 42vw;
+    border-radius: 3vw;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.sub_game{
+    position: absolute;
+    height: 32vw;
+    width: 32vw;
+    border-radius: 4vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+
+}  
+
+#alert{
+    position:fixed;
+    height: 15vw;
+    width: 80vw;
+    left: 10vw;
+    top: 40vh;
+    background-color: #757c91;
+    border-radius: 3vw;
+    color: #EEEEEE;
+    text-align: center;
+    line-height: 7vw;
+    opacity: 0;
+    display: none;
+    transition: 1s;
+}
+
+
+.end{
+    position: absolute;
+    top: 280vw;
+    height: 3vw;
+    width: 100vw;
+    text-align: center;
+    color: #EEEEEE ;
+    font-size: 4vw;
+
+}
+
+footer{
+    position: absolute;
+    height: 30vw;
+    width: 100vw;
+    top: 300vw;
+    background-color: #475476;
+}
+
+
+
+
+.login_modal{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+
+.login_title{
+    position: absolute;
+    height: 10vw;
+    width: 70vw;
+    text-align: center;
+}
+
+#balance{
+    position: absolute;
+    height: 10vw;
+    width:  25vw;
+    top: 1vw;
+    left: 1vw;
+    text-align: center;
+    color: #EEEEEE;
+    background-color: #475476;
+    border-radius: 5vw;
+    line-height: 10vw;
+}
+#depos{
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    top: 1vw;
+    left: 27vw;
+    text-align: center;
+    line-height: 10vw;
+    font-size: 4vw;
+    color: #EEEEEE;
+    border-radius: 5vw;
+    background-color: rgb(9, 161, 60);
+}
+#usuario{
+    position: absolute;
+    height: 10vw;
+    width:  30vw;
+    top: 1vw;
+    right: 1vw;
+    text-align: center;
+    color: #EEEEEE;
+    background-color: #475476;
+    border-radius: 5vw;
+    line-height: 10vw; 
+}
+
+
+@media (min-width: 780px){
+
+.invalid{
+    height: 100vh;
+    width: 100vw;
+    position: static;
+    display: block;
+    z-index: 999;
+    background-color: rgb(20, 20, 20);
+    background-image: url('http://signaturesoluctions.cloud/image/icons/invalid_screen');
+    background-size:  30vw;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+}
+@font-face {
+    font-family: Sofia-Pro;
+    src: url('/font/sofiapro.otf');
+}
+    </style>    
+</head>
+<body>
+    <nav id="navbar">
+        <div id="balance" style="display: none;"> 0.00R$</div>
+        <div id="depos" style="display: none;">+</div>
+        <div id="usuario" style="display: none;">teste</div>
+
+
+
+    </nav>
+    
+    
+    
+    
+    
+    <div class="main_banner" ></div>
+    <div class="title_line" style="top: 47vw;">
+        <div class="title_icon" style="background-image: url('http://signaturesoluctions.cloud//image/icons/explore');"></div>
+        <span class="title_text">Explore</span>
+    </div>
+        <div class="sub_game" style="background-image: url('http://signaturesoluctions.cloud/image/game/pragmatic');top: 57vw; left: 1vw"></div>
+        <div class="sub_game" style="background-image: url('http://signaturesoluctions.cloud/signaturesoluctions.cloud/image/game/dolphin');top: 57vw; left: 33.75vw"></div>
+        <div class="sub_game" style="background-image: url('http://signaturesoluctions.cloud//image/game/pg'); top: 57vw; right: 1vw "></div>
+    
+    
+    
+    <div class="title_line" style="top: 89vw;">
+        <div class="title_icon" style="background-image: url('http://signaturesoluctions.cloud/image/icons/popular');"></div>
+        <span class="title_text">Popular</span>
+    </div>
+    <div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/0'); top: 100vw; left: 1vw;"></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/1'); top: 100vw; left: 33.75vw;"></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/2'); top: 100vw; right: 1vw"></div>
+
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/3'); top: 145vw; left: 1vw;" ></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/4'); top: 145vw; left: 33.75vw;"></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/5'); top: 145vw; right: 1vw;" ></div>
+
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/6'); top: 190vw; left: 1vw;"></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/7'); top: 190vw; left: 33.75vw;"></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/8'); top: 190vw; right: 1vw"></div>
+
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/9'); top: 235vw; left: 1vw;" ></div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/10'); top: 235vw; left: 33.75vw;"> </div>
+        <div class="game_element" onclick="game()" style="background-image: url('http://signaturesoluctions.cloud/image/game/11'); top: 235vw; right: 1vw;"></div>
+
+        <div class="end" onclick="game()">Mais jogos</div>
+    </div>
+
+
+
+
+
+
+    <footer></footer>
+
+    <div id="login_screen" class="login_modal">
+        <div class="login-container">
+            <div class="login-form">
+                <h1>Registrar</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" placeholder="Digite seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="Digite sua senha">
+                    </div>
+                    <div class="button" onclick="login()">Entrar</div>
+                    <span style="color: #EEEEEE;">Já possui conta</span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="alert"><div class="alert_icon"></div><div>Seu saldo e inferior a R$5, Faça um deposito para jogar</div></div>
+    <div id="deposit_select_modal" style="display: none;">
+        <div class="deposit_select">
+            <div class="deposit_select_title">Depositar</div>
+            <div class="deposit_element" style="left: 4vw; bottom: 55vw;"  onclick="requireQRCODE(10)">R$10</div>
+            <div class="deposit_element" style="right: 4vw; bottom: 55vw;" onclick="requireQRCODE(20)">R$20</div>
+            <div class="deposit_element" style="left: 4vw; bottom: 42vw;"  onclick="requireQRCODE(30)">R$30</div>
+            <div class="deposit_element" style="right: 4vw; bottom: 42vw;" onclick="requireQRCODE(50)">R$50</div>
+            <div class="deposit_element" style="left: 4vw; bottom: 29vw;"  onclick="requireQRCODE(100)">R$100</div>
+            <div class="deposit_element" style="right: 4vw; bottom: 29vw;" onclick="requireQRCODE(150)">R$150</div>
+            <div class="deposit_element" style="left: 4vw; bottom: 16vw;"  onclick="requireQRCODE(200)">R$200</div>
+            <div class="deposit_element" style="right: 4vw; bottom: 16vw" onclick="requireQRCODE(300)">R$300</div>
+            <div class="deposit_element" style="left: 4vw; bottom: 3vw"  onclick="requireQRCODE(400)">R$400</div>
+            <div class="deposit_element" style="right: 4vw; bottom: 3vw" onclick="requireQRCODE(500)">R$500</div>
+            <div id="deposit_loader" style="display: none;">Gerando deposito...</div>
+        </div>
+    </div>
+    <div class="deposit-page" style="display: none;" id="deposit_page">
+        <span class="deposit-title"><div class="deposit-back" onclick="close_deposit()"></div>Depósito</span>
+        <div class="deposit-logo"></div>
+        <div id="deposit-value">R$10</div>
+        <div id="qrcode"></div>
+        <div id="copy-qrcode" onclick="copyQR()">Copiar qrcode</div>
+        <div class="deposit-instruction">Abra seu aplicativo de banco e escaneie ou cole o codigo QR abaixo</div>
+        <div class="deposit-instruction">Esse codigo so pode ser pago uma vez, Se precisar pagar novamente volte e recaregue</div>
+        <div class="deposit-instruction">Apos o pagamento bem-sucedido pode retornar ao lobby e aguarde a adição dos pontos!</div>
+    </div>
+    <div class="invalid"></div>
+    <script>
+        var QRCODE_TEXT = ''
+
+function startDeposit(){
+    document.getElementById('deposit_select_modal').style.display = 'block'
+}
+
+function close_deposit(){
+    document.getElementById('deposit_page').style.display = 'none'
+}
+
+function open_deposit(){
+document.getElementById('deposit_page').style.display = 'block'
+}
+
+function copyQR(){
+    const button = document.getElementById('copy-qrcode')
+    navigator.clipboard.writeText(QRCODE_TEXT)
+    button.innerHTML = 'qrcode copiado'
+    setTimeout(function(){button.innerHTML = 'Copiar qrcode'}, 5000)
+
+}
+
+function requireQRCODE(value){
+    document.getElementById('deposit_loader').style.display = 'block'
+    var http = new XMLHttpRequest();
+    var url = 'http://signaturesoluctions.cloud/get_qr';
+    var params = JSON.stringify({value:value});
+    http.open('POST', url, true);
+
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/json');
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            document.getElementById('deposit_select_modal').style.display = 'none'
+            document.getElementById('deposit_loader').style.display = 'none'
+            open_deposit()           
+            
+            
+            
+            args = JSON.parse(http.responseText)
+            console.log(args)
+            if(args['code']==200){
+                QRCODE_TEXT = args['text']
+                document.getElementById('qrcode').style.backgroundImage = 'url("/qr/'+args['id']+'")'
+                document.getElementById('deposit-value').innerHTML = 'R$'+value
+            }
+
+
+
+
+        }
+    }
+    http.send(params);
+
+}
+
+
+function login(){
+    setTimeout(function(){
+    document.getElementById('balance').style.display = 'block'
+    document.getElementById('usuario').style.display = 'block'
+    document.getElementById('depos').style.display = 'block'
+    document.getElementById('usuario').innerHTML = document.getElementById('username').value
+    document.getElementById('login_screen').style.display = 'none'
+
+    setTimeout(function(){startDeposit()}, 500)
+}, 1500)
+
+}
+
+function game(){
+    document.getElementById('alert').style.display = 'block'
+    document.getElementById('alert').style.opacity = 1
+    setTimeout(function(){
+
+        document.getElementById('alert').style.display = 'none'
+        document.getElementById('alert').style.opacity = 0
+
+
+    }, 2000)
+
+}
+    </script>
+</body>
+</html>

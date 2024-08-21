@@ -1,0 +1,170 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Sofia-Pro;
+}
+body{
+    background-color: #586487;
+    height: 330vw;
+    width: 100vw;
+}
+nav{
+    position: fixed;
+    height: 12vw;
+    width: 100vw;
+    position: static;
+    background-color: #364364;
+    top: 0px;
+}
+.main_banner{
+    height: 30vw;
+    width: 96vw;
+    top: 16vw;
+    border-radius: 2vw;
+    background-color: #475476;
+    position: absolute;
+    left: 2vw;
+    background-position: center;
+    background-size: cover;
+    background-image: url('https://betpal.com/wp-content/uploads/2019/08/Pragmatic.png');
+    
+    
+}
+
+.title_line{
+    position: absolute;
+    height: 10vw;
+    width: 100vw;
+    top: 89vw;
+}
+
+.title_icon{
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 7vw;
+}
+.title_text{
+    position: absolute;
+    height: 10vw;
+    width: 90vw;
+    left: 10vw;
+    font-size: 5vw;
+    line-height: 10vw;
+    color: #EEEEEE;
+
+}
+
+.game_element{
+    position: absolute;
+    width: 32vw;
+    height: 42vw;
+    border-radius: 3vw;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.sub_game{
+    position: absolute;
+    height: 32vw;
+    width: 32vw;
+    border-radius: 4vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+
+}  
+
+#alert{
+    position:fixed;
+    height: 15vw;
+    width: 80vw;
+    left: 10vw;
+    top: 40vh;
+    background-color: #757c91;
+    border-radius: 3vw;
+    color: #EEEEEE;
+    text-align: center;
+    line-height: 7vw;
+    opacity: 0;
+    display: none;
+    transition: 1s;
+}
+
+
+.end{
+    position: absolute;
+    top: 280vw;
+    height: 3vw;
+    width: 100vw;
+    text-align: center;
+    color: #EEEEEE ;
+    font-size: 4vw;
+
+}
+
+footer{
+    position: absolute;
+    height: 30vw;
+    width: 100vw;
+    top: 300vw;
+    background-color: #475476;
+}
+
+
+
+
+.login_modal{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+
+.login_title{
+    position: absolute;
+    height: 10vw;
+    width: 70vw;
+    text-align: center;
+}
+
+#balance{
+    position: absolute;
+    height: 10vw;
+    width:  25vw;
+    top: 1vw;
+    left: 1vw;
+    text-align: center;
+    color: #EEEEEE;
+    background-color: #475476;
+    border-radius: 5vw;
+    line-height: 10vw;
+}
+#depos{
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    top: 1vw;
+    left: 27vw;
+    text-align: center;
+    line-height: 10vw;
+    font-size: 4vw;
+    color: #EEEEEE;
+    border-radius: 5vw;
+    background-color: rgb(9, 161, 60);
+}
+#usuario{
+    position: absolute;
+    height: 10vw;
+    width:  30vw;
+    top: 1vw;
+    right: 1vw;
+    text-align: center;
+    color: #EEEEEE;
+    background-color: #475476;
+    border-radius: 5vw;
+    line-height: 10vw; 
+}
